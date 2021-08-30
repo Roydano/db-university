@@ -19,6 +19,12 @@
     FROM `students`
     WHERE YEAR(NOW()) - YEAR(`date_of_birth`) > 30
 
+    oppure (la più corretta perchè tiene conto della data attuale e quindi chi ha compiuto gli anni in questi giorni)
+    
+    SELECT *
+    FROM `students`
+    WHERE TIMESTAMPDIFF(year, `date_of_birth`, CURDATE()) > 30
+
 4)
     SELECT *
     FROM `courses`
@@ -39,6 +45,6 @@
     FROM `departments`
 
 8)
-    SELECT *
+    SELECT COUNT(id) AS `teacher_without_phone`
     FROM `teachers`
     WHERE `phone` IS NULL
